@@ -31,6 +31,8 @@ module.exports = class Usuario{
       throw { message: "Senha obrigatória"}
     }
 
+    this.nome = this.nome.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, "")
+
     this.senha = Cripto.make(this.senha)
     try {
       await db.exec(`insert into usuarios(nome, login, senha) values(?, ?, ?)`, [this.nome, this.login, this.senha])
@@ -47,6 +49,7 @@ module.exports = class Usuario{
     if(!this.senha || this.senha == ""){
       throw { message: "Senha obrigatória"}
     }
+    this.nome = this.nome.replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, "")
     
     this.senha = Cripto.make(this.senha)
     try {

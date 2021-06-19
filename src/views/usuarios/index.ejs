@@ -17,7 +17,7 @@
       </tr>
       <% for(let i=0; i<usuarios.length; i++ ){ %>
       <tr>
-        <td><%= usuarios[i].nome %></td>
+        <td><%- usuarios[i].nome %></td>
         <td><%= usuarios[i].login %></td>
         <td style="width:50px"><a href="/usuarios/<%= usuarios[i].id %>" class="btn btn-primary">Editar</a></td>
         <td style="width:50px"><a href="#" onclick="if(confirm('Confirma?')){ window.location.href='/usuarios/<%= usuarios[i].id %>/delete'; }" class="btn btn-danger">Excluir</a></td>
