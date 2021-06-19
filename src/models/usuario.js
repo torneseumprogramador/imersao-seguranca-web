@@ -1,4 +1,5 @@
 const db = require("../config/db")
+const Cripto = require('../helpers/cripto')
 
 module.exports = class Usuario{
   constructor(){
@@ -8,8 +9,8 @@ module.exports = class Usuario{
     this.senha = ""
   }
 
-  static async login(login, senha){
-    let usuarios = await db.exec("select id, nome, login, senha from usuarios where login=? and senha=?", [login, senha])
+  static async login(login){
+    let usuarios = await db.exec("select id, nome, login, senha from usuarios where login=?", [login])
     return usuarios[0];
   }
 
@@ -26,6 +27,11 @@ module.exports = class Usuario{
   }
 
   async salvar(){
+    if(!this.senha || this.senha == ""){
+      throw { message: "Senha obrigatória"}
+    }
+
+    this.senha = Cripto.make(this.senha)
     try {
       await db.exec(`insert into usuarios(nome, login, senha) values(?, ?, ?)`, [this.nome, this.login, this.senha])
     }
@@ -38,6 +44,11 @@ module.exports = class Usuario{
   }
 
   async atualizar(){
+    if(!this.senha || this.senha == ""){
+      throw { message: "Senha obrigatória"}
+    }
+    
+    this.senha = Cripto.make(this.senha)
     try {
       await db.exec(`update usuarios set nome=?, login=?, senha=? where id = ?`, [this.nome, this.login, this.senha, this.id])
     }

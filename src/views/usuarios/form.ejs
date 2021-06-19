@@ -4,7 +4,7 @@
   <label for="login">Login:</label>
   <input type="text" class="form-control" id="login" name="login"  value="<%= usuario.login %>"><br>
   <label for="senha">Senha:</label>
-  <input type="password" class="form-control" id="senha" name="senha"  value="<%= usuario.senha %>">
+  <input type="password" class="form-control" id="senha" required name="senha">
   <% if(erro !== ""){ %>
     <br>
     <div class="alert alert-danger"><%= erro %></div>

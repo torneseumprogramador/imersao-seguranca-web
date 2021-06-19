@@ -34,6 +34,13 @@
         </div>
       <% } %>
       <br>
+      <input type="hidden" id="recaptcha" name="g-recaptcha-response">
+      <script>
+        function cb(data){
+          document.getElementById("recaptcha").value = data
+        }
+      </script>
+      <%- captcha %>
       <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
     </form>
   </body>

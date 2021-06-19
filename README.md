@@ -39,6 +39,8 @@ export DATABASE_USER=root
 export DATABASE_PASS='Senha&12_torne00'
 export DATABASE=imersao_seguranca
 export DATABASE_PORT=3306
+export RECPTCHA_KEY=key
+export RECPTCHA_PASS=pass
 ```
 
 # Para instalar source
@@ -94,3 +96,6 @@ senha = blabla' or  'a' = 'a
 select id, nome, login, senha from usuarios
 where login='danilo' and senha='danilo' 
 ```
+
+# Criando chave recaptcha
+https://www.google.com/recaptcha/admin/create

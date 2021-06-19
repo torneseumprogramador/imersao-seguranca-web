@@ -16,8 +16,11 @@ router.get('/usuarios/:id', LoginMiddleware, UsuariosController.editar);
 router.post('/usuarios/:id', LoginMiddleware, UsuariosController.update);
 router.get('/usuarios/:id/delete', LoginMiddleware, UsuariosController.apagar);
 
-router.get('/login', LoginController.index);
-router.post('/logar', LoginController.logar);
+var Recaptcha = require('express-recaptcha').RecaptchaV3;
+var recaptcha = new Recaptcha(process.env.RECPTCHA_KEY, process.env.RECPTCHA_PASS, {callback:'cb'});
+
+router.get('/login', recaptcha.middleware.render, LoginController.index);
+router.post('/logar', recaptcha.middleware.verify, LoginController.logar);
 router.get('/sair', LoginController.deslogar);
 
 router.get('/usuarios.json', UsuariosController.indexJson);

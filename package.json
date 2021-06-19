@@ -14,12 +14,14 @@
     "ejs": "~2.6.1",
     "express": "~4.16.1",
     "express-flash-message": "^2.1.0",
+    "express-recaptcha": "^5.0.2",
     "express-session": "^1.17.2",
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1",
     "mysql2": "^2.2.5"
   },
   "devDependencies": {
+    "axios": "^0.21.1",
     "dotenv": "^10.0.0",
     "nodemon": "^2.0.7"
   }
