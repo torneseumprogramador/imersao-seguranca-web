@@ -8,8 +8,9 @@ module.exports = class Usuario{
     this.senha = ""
   }
 
-  static login(login, senha){
-    return (login === "tornese" && senha === "imersao")
+  static async login(login, senha){
+    let usuarios = await db.exec("select id, nome, login, senha from usuarios where login='" + login +  "' and senha='" + senha + "' ")
+    return usuarios[0];
   }
 
   static async todos(){

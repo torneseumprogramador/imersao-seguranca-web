@@ -1,4 +1,5 @@
 const Usuario = require("../models/usuario")
+const Cookie = require("../helpers/cookie")
 
 module.exports = {
   index: async (req, res) => {
