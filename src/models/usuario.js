@@ -1,3 +1,5 @@
+const db = require("../config/db")
+
 module.exports = class Usuario{
   constructor(){
     this.nome = ""
@@ -6,14 +8,10 @@ module.exports = class Usuario{
   }
 
   static login(login, senha){
-    return (login === "tornese" && senha === "imsersao")
+    return (login === "tornese" && senha === "imersao")
   }
 
-  static todos(){
-    return [
-      {nome: "Danilo", login: "tornese", senha: "imsersao"},
-      {nome: "Lana", login: "lana", senha: "imsersao"},
-      {nome: "Sheila", login: "sheila", senha: "imsersao"},
-    ]
+  static async todos(){
+    return await db.exec("select nome, login, senha from usuarios order by id desc limit 100")
   }
 }
