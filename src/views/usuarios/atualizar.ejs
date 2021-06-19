@@ -11,6 +11,6 @@
     <a href="/usuarios" class="btn btn-default">Voltar para lista</a>
     <br>
     <br>
-    <%- include("form", {url: "/usuarios/criar", usuario: usuario}) %>
+    <%- include("form", {url: `/usuarios/${usuario.id}`, usuario: usuario}) %>
   </body>
 </html>

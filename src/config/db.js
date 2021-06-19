@@ -14,8 +14,9 @@ db.exec = async (sql, values) => {
     return rows;
   }
   catch(e){
-    console.log(e)
-    return []
+    throw e
+    //console.log(e)
+    // return []
   } finally {
     conn.end();
   }
