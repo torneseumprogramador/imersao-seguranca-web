@@ -4,9 +4,7 @@ if(process.env.NODE_ENV !== "production"){
 
 const mysql = require('mysql2');
 const util = require('util');
-// console.log("-------------")
-// console.log(process.env.DATABASE_URL)
-// const connectionString = ;
+
 const db = {};
 db.exec = async (sql, values) => {
   const conn = mysql.createConnection({
@@ -16,6 +14,7 @@ db.exec = async (sql, values) => {
     database: process.env.DATABASE,
     port: process.env.DATABASE_PORT,
   });
+  
   const query = util.promisify(conn.query).bind(conn);
   try {
     const rows = await query(sql, values);
