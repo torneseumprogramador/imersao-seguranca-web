@@ -4,6 +4,9 @@ if(process.env.NODE_ENV !== "production"){
 
 const mysql = require('mysql');
 const util = require('util');
+console.log("-------------")
+console.log(process.env.DATABASE_URL)
+console.log("-------------")
 const connectionString = process.env.DATABASE_URL;
 const db = {};
 db.exec = async (sql, values) => {
