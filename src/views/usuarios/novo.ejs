@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Usuarios</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+  </head>
+  <body>
+    <h1>Usuarios</h1>
+    <hr>
+    <a href="/usuarios" class="btn btn-default">Voltar para lista</a>
+    <br>
+    <br>
+    <form action="/usuarios/criar" method="post">
+      <label for="nome">Nome:</label>
+      <input type="text" class="form-control" id="nome" name="nome" value="<%= usuario.nome %>"><br>
+      <label for="login">Login:</label>
+      <input type="text" class="form-control" id="login" name="login"  value="<%= usuario.login %>"><br><br>
+      <label for="senha">Senha:</label>
+      <input type="password" class="form-control" id="senha" name="senha"  value="<%= usuario.senha %>"><br><br>
+      <input type="submit" class="btn btn-primary" value="Enviar">
+    </form> 
+  </body>
+</html>
