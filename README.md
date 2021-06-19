@@ -83,5 +83,14 @@ sudo systemctl start nginx
 sudo systemctl restart nginx
 ```
 
+# comandos comandos sql injection
+``` sql
+select id, nome, login, senha from usuarios 
+where login='blabla' or  'a' = 'a' and senha='blabla' or  'a' = 'a' 
 
+login = blabla' or  'a' = 'a
+senha = blabla' or  'a' = 'a
 
+select id, nome, login, senha from usuarios
+where login='danilo' and senha='danilo' 
+```

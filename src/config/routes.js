@@ -17,7 +17,7 @@ router.post('/usuarios/:id', LoginMiddleware, UsuariosController.update);
 router.get('/usuarios/:id/delete', LoginMiddleware, UsuariosController.apagar);
 
 router.get('/login', LoginController.index);
-router.get('/logar', LoginController.logar);
+router.post('/logar', LoginController.logar);
 router.get('/sair', LoginController.deslogar);
 
 router.get('/usuarios.json', UsuariosController.indexJson);
