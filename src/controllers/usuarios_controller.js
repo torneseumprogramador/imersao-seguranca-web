@@ -64,7 +64,12 @@ module.exports = {
     res.redirect('/usuarios');
   },
   indexJson: async (req, res) => {
-    res.send(await Usuario.todos()).status(200);
+    let usuarios = await Usuario.todos()
+    for(let i=0; i<usuarios.length; i++){
+      usuarios[i].senha = undefined
+    }
+
+    res.send(usuarios).status(200);
   },
   criarJson: async (req, res) => {
     const {nome, login, senha} = req.body
@@ -119,6 +124,7 @@ module.exports = {
     let usuario = {}
     try{
       usuario = (await Usuario.busca(id))[0]
+      usuario.senha = undefined
     }
     catch(e){
       res.status(404).send({ erro: e.message });
