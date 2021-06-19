@@ -1,5 +1,6 @@
 const Usuario = require("../models/usuario")
 const Cookie = require("../helpers/cookie")
+const Cripto = require('../helpers/cripto')
 
 module.exports = {
   index: async (req, res) => {
@@ -13,7 +14,10 @@ module.exports = {
   logar: async (req, res) => {
     let usuario = await Usuario.login(req.body.login, req.body.senha);
     if(usuario){
-      Cookie.set(res, "usuario", usuario)
+      let string_usuario = JSON.stringify(usuario);
+      let validador = Cripto.make(string_usuario);
+      Cookie.set(res, "usuario", string_usuario)
+      Cookie.set(res, "usuario_validador", validador)
       res.redirect("/usuarios")
     }
     else{
