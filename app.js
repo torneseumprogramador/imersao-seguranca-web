@@ -30,6 +30,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+const RateLimit = require('express-rate-limit');
+const limiter = RateLimit({
+  windowMs: 60 * 60 * 1000, // 60 minutes
+  max: 20000 // limit each IP to 100 requests per windowMs
+});
+app.use(limiter);
+
 app.use('/', routes);
 
 // catch 404 and forward to error handler
